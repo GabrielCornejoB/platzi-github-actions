@@ -1,0 +1,26 @@
+name: Reto 3 Triggers
+run-name: Reto 3 Triggers
+on:
+  push:
+    paths: ["**.yml"]
+  pull_request:
+    types: [opened]
+  workflow_dispatch:
+    inputs:
+      text:
+        description: Just a text
+        required: true
+        type: string
+      decision:
+        description: Just a decision
+        type: boolean
+      options:
+        description: Just a option input
+        type: choice
+        options: [first, second, third]
+jobs:
+  print-something:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print
+        run: echo something
