@@ -1,0 +1,15 @@
+name: Variables
+run-name: Workflow de prueba de variables
+on: push
+env:
+  WORKFLOW_VAR: Variable de workflow
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    env:
+      JOB_VAR: Variable de Job
+    steps:
+      - name: Prints github info
+        env:
+          STEP_VAR: Variable de Step
+        run: echo "$REPOSITORY_VAR - $WORKFLOW_VAR - $JOB_VAR - $STEP_VAR"
