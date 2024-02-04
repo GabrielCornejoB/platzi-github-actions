@@ -1,0 +1,26 @@
+name: Expresiones (Blackjack?)
+run-name: Operadores, Literales y Funciones
+on:
+  workflow_dispatch:
+    inputs:
+      valor_carta_1:
+        description: Valor Carta 1 (1 a 11)
+        required: true
+        type: number
+      valor_carta_2:
+        description: Valor Carta 2 (1 a 11)
+        required: true
+        type: number
+jobs:
+  blackjack:
+    if: ${{ (inputs.valor_carta_1 == 10 && inputs.valor_carta_2 == 11) || (inputs.valor_carta_1 == 11 && inputs.valor_carta_2 == 10) }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Blackjack
+        run: echo Blackjack!!!
+  other_scenario:
+    if: ${{ !(inputs.valor_carta_1 == 10 && inputs.valor_carta_2 == 11) && !(inputs.valor_carta_1 == 11 && inputs.valor_carta_2 == 10) }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Not blackjack
+        run: echo Not blackjack :(
